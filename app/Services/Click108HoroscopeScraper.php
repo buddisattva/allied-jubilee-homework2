@@ -27,10 +27,8 @@ class Click108HoroscopeScraper implements HoroscopeScraper
         '雙魚座' => 11,
     ];
 
-    public function scrape(): Collection
+    public function scrape(string $date): Collection
     {
-        $date = now()->format('Y-m-d');
-
         return collect(self::ZODIAC_SIGNS)->map(function ($code, $sign) use ($date) {
             $url = sprintf(self::BASE_URL, $code, $code, $date);
             $client = new Client();
@@ -54,7 +52,7 @@ class Click108HoroscopeScraper implements HoroscopeScraper
 
             return [
                 'date' => $date,
-                'zodiac' => $sign,
+                'zodiac_sign' => $sign,
                 'overall_score' => $overall['score'],
                 'overall_detail' => $overall['detail'],
                 'love_score' => $love['score'],

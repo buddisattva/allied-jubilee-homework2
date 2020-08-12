@@ -4,5 +4,5 @@ namespace App\Services\Contracts;
 
 interface HoroscopeScraper
 {
-    public function scrape();
+    public function scrape(string $date);
 }
