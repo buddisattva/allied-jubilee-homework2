@@ -17,4 +17,12 @@ class HoroscopeRepository
     {
         return $this->horoscope->updateOrInsert($matchings, $values);
     }
+
+    public function getAll()
+    {
+        return $this->horoscope
+            ->orderBy('date')
+            ->orderBy('zodiac_sign')
+            ->get();
+    }
 }
